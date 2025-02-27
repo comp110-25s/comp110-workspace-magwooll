@@ -58,7 +58,7 @@ def main(secret: str) -> None:
         else:
             turn_number += 1
     if won:
-        print(f"You won in {turn_number-1}/{turns_left} turns!")
+        print(f"You won in {turn_number}/{turns_left} turns!")
     else:
         print("X/6 - Sorry, try again tomorrow!")
 
