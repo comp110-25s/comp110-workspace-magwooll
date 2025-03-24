@@ -20,7 +20,7 @@ YELLOW_BOX: str = "\U0001F7E8"
 
 
 def emojified(guess: str, secret: str) -> str:
-    """Creates a string of emojis in response to a guess and secret string of equal lengths which represents how each character in the guess matches the secret word."""
+    """Creates a string of emojis in response to a guess and secret string of equal length which represents how each character in the guess matches the secret word."""
     assert len(guess) == len(secret), "Guess must be same length as secret"
     result = ""
     index = 0
