@@ -41,7 +41,7 @@ def favorite_color(preferences: dict[str, str]) -> str:
     return frequent_color
 
 
-def bin_len(words: list[str]) -> dict[int, set]:
+def bin_len(words: list[str]) -> dict[int, set[str]]:
     result = {}
     for item in words:
         length = len(item)
