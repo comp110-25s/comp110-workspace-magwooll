@@ -6,14 +6,15 @@ __author__ = "730472800"
 def invert(input: dict[str, str]) -> dict[str, str]:
     """Inverts the keys and values of a given dictionary."""
     inverted_dict = {}
-    for key, value in input:
-        if value in inverted_dict:
-            raise KeyError(f"Duplicate value '{value}' found during inversion.")
-        inverted_dict[value] = key
+    for key in input:
+        if input[key] in inverted_dict:
+            raise KeyError(f"Duplicate value '{input[key]}' found during inversion.")
+        inverted_dict[input[key]] = key
     return inverted_dict
 
 
 def count(values: list[str]) -> dict[str, int]:
+    """Creates a dictionary from a given list where keys are items in the list and values are the count of the associated items."""
     frequencies = {}
     for item in values:
         if item in frequencies:
@@ -24,23 +25,28 @@ def count(values: list[str]) -> dict[str, int]:
 
 
 def favorite_color(preferences: dict[str, str]) -> str:
-    """Determines which color appears most frequently in a dictionary of favorite colors."""
-    color_number = count(list(preferences))
-    frequent_color = None
-    max_count = 0
-    for color in preferences:
-        if color_number[color] > max_count:
-            frequent_color = color
-            max_count = color_number[color]
+    """Determines which color appears most frequently in a dictionary of names and favorite colors."""
+    color_number = {}
+    for name in preferences:
+        if preferences[name] not in color_number:
+            color_number[preferences[name]] = 1
+        else:
+            color_number[preferences[name]] += 1
+    frequent_color = "None"
+    total_count = 0
+    for key in color_number:
+        if color_number[key] > total_count:
+            frequent_color = key
+            total_count = color_number[key]
     return frequent_color
 
 
 def bin_len(words: list[str]) -> dict[int, set]:
     result = {}
-    for string in words:
-        length = len(string)
-        if length not in result:
-            result[length] = {string}
+    for item in words:
+        length = len(item)
+        if length in result:
+            result[length].add(item)
         else:
-            result[length].append(string)
+            result[length] = {item}
     return result
